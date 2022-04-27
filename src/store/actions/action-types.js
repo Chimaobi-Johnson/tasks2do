@@ -1,1 +1,1 @@
-export const UPDATE_TODO_LIST = 'UPDATE_TODO_LIST';
+export const ADD_TODO_ITEM = 'ADD_TODO_ITEM';

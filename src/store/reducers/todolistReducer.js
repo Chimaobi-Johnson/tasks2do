@@ -1,16 +1,15 @@
-import { UPDATE_TODO_LIST } from "../actions/action-types";
+import { ADD_TODO_ITEM } from "../actions/action-types";
   
-  const initialState = {
-      items: []
-  }
-  
-  export const updateTodoList = (state = initialState, action) => {
+  const initialState = [];
+
+  export const addTodoItem = (state = initialState, action) => {
     switch (action.type) {
-      case UPDATE_TODO_LIST:
-        return action.payload
+      case ADD_TODO_ITEM:
+        state.push(action.payload);
+        return state
       default:
         return state;
     }
   };
   
-  export default updateTodoList;
+  export default addTodoItem;

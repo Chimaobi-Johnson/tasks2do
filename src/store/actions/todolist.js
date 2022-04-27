@@ -1,15 +1,12 @@
-import { UPDATE_TODO_LIST } from './action-type';
+import { ADD_TODO_ITEM } from './action-types';
 
 
 
-export const updateCurrentChat = (item) => (dispatch) => {
+export const addTodoItem = (item) => (dispatch) => {
     dispatch({
-        type: UPDATE_TODO_LIST,
+        type: ADD_TODO_ITEM,
         payload: item
     })
 }
 
-export const updateTodo = (item, id) => (dispatch) => {
-   
 
-}
