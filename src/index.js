@@ -2,12 +2,27 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
+import { Provider } from 'react-redux';
 import reportWebVitals from './reportWebVitals';
+import thunk from 'redux-thunk';
+
+import TodoList from './store/reducers/todolistReducer';
+
+const rootReducer = combineReducers({
+  items: TodoList
+});
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)));
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+       <App />
+    </Provider>
   </React.StrictMode>
 );
 
