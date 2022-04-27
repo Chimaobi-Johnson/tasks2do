@@ -10,6 +10,9 @@ function App() {
             <header>TODO LIST</header>
             <Input />
             <Items />
+          <div className="save">
+            <button>Save</button>
+          </div>
          </div>
       </div>  
     );
