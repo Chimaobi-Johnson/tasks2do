@@ -30,10 +30,10 @@
 
 
 .edit {
-    background-color: red;
+    color: green;
 }
 
 .delete {
     margin-left: 5px;
-    background-color: aqua;
+    color: red;
 }

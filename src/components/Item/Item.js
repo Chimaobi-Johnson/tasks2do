@@ -1,4 +1,6 @@
 import React from 'react';
+import { FaPen } from 'react-icons/fa';
+import { FaTrash } from 'react-icons/fa';
 import styles from './Item.module.css';
 
 
@@ -11,10 +13,10 @@ const Item = props => {
             </div>
             <div className={styles.actions}>
                 <div className={styles.edit}>
-                    Edit
+                   <FaPen />
                 </div>
                 <div className={styles.delete}>
-                    Del
+                   <FaTrash />
                 </div>
             </div>
         </div>
