@@ -7,7 +7,7 @@ const Item = props => {
     return (
         <div className={styles.wrapper}>
             <div className={styles.content}>
-                <span>this is my first task</span>
+                <span>{props.content}</span>
             </div>
             <div className={styles.actions}>
                 <div className={styles.edit}>

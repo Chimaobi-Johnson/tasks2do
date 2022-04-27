@@ -8,18 +8,26 @@ const Input = props => {
 
     const dispatch = useDispatch();
 
-    const [ currentText, setCurrentText ] = useState("")
+    const [ currentText, setCurrentText ] = useState("");
     const changeTextHandler = (e) => {
         setCurrentText(e.target.value);
     }
 
+    const handleKeyPress = (event) => {
+        if(event.key === 'Enter'){
+            dispatch(addTodoItem(currentText));
+            setCurrentText("");
+        }
+      }
+
     const updateItem = () => {
          dispatch(addTodoItem(currentText));
+         setCurrentText("");
     }
 
     return (
         <div className={styles.wrapper}>
-            <input type="text" onChange={(event) => changeTextHandler(event)} placeholder="add an item" />
+            <input type="text" value={currentText} onKeyPress={handleKeyPress} onChange={(event) => changeTextHandler(event)} placeholder="add an item" />
             <button onClick={() => updateItem()}>+</button>
         </div>
     )
