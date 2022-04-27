@@ -1,0 +1,30 @@
+.wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 35px;
+}
+
+input {
+    /* padding: 8px 5px; */
+    height: 100%;
+    width: 100%;
+    border: none;
+    outline: none;
+}
+
+input::placeholder {
+    padding-left: 4px;
+}
+
+button {
+    position: absolute;
+    width: 7%;
+    right: 0;
+    height: inherit;
+    background-color: #0ab521;
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
