@@ -20,11 +20,13 @@ export const fetchData = (item) => (dispatch) => {
 }
 
 export const saveDataHandler = (data) => async (dispatch) => {
-    await addDoc(itemsList, {items: data})
-    dispatch({
-        type: SAVE_DATA,
-        payload: data
-    })
+    const res = await db.collection('todolist').doc('items').set({items: data})
+    if(res) {
+        dispatch({
+            type: SAVE_DATA,
+            payload: data
+        })
+    }
 }
 
 

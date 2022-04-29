@@ -17,14 +17,15 @@ function App() {
   useEffect(() => {
 
     const getTodoListItems = async () => {
-
-      const dataset = await db.collection('todolist').get();
+      // query by items to get data from the items document
+      const dataset = await db.collection('todolist').where('__name__', '==' ,'items').get()
       if(!dataset) {
         alert("error retrieving data. check connection settings")
       } else {
-        // take first document and dispatch to redux store
+        // take items doc and dispatch to redux store
         const data = dataset.docs.map(doc => doc.data());
         console.log(data[0])
+        // dispatch first object to redux store (query can only return one object at a time)
         dispatch(fetchData(data[0]));
       }
 
