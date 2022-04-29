@@ -3,7 +3,7 @@ import { ADD_TODO_ITEM, FETCHED_DATA_SUCCESSFULLY, SET_CURRENT_INDEX, UPDATE_TOD
   const initialState = {
     items: [],
     currentIndex: null,
-    action: ''
+    editing: false
   }
 
   export const addTodoItem = (state = initialState, action) => {
@@ -21,10 +21,10 @@ import { ADD_TODO_ITEM, FETCHED_DATA_SUCCESSFULLY, SET_CURRENT_INDEX, UPDATE_TOD
             items: action.payload.items
           }
       case SET_CURRENT_INDEX:
-        console.log(action.payload.data)
+
         return {
           ...state,
-          action: action.payload.data === 'edit' ? 'editing' : 'delete' ? 'deleting' : '',
+          editing: action.payload.data === 'edit' ? true : false,
           currentIndex: action.payload.index
         }
       case UPDATE_TODO_ITEM:

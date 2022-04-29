@@ -43,8 +43,10 @@ export const setCurrentAction = (data, index) => async (dispatch) => {
 export const updateTodoItem = (data, index) => async (dispatch) => {
     dispatch({
         type: UPDATE_TODO_ITEM,
-        payload: data,
-        index: index
+        payload: {
+            data: data,
+            index: index
+        }
     })
 }
 

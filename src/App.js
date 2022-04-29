@@ -13,7 +13,7 @@ function App() {
   const dispatch = useDispatch();
   const listItems = useSelector(data => data.todolist.items);
   const currentIndex = useSelector(data => data.todolist.currentIndex);
-  const action = useSelector(data => data.todolist.action);
+  const editing = useSelector(data => data.todolist.editing);
   console.log(currentIndex)
   useEffect(() => {
 
@@ -43,7 +43,7 @@ function App() {
   const handleKeyPress = (event) => {
       if(event.key === 'Enter'){
         if(currentText === "") return
-        if(action === 'editing') {
+        if(editing) {
           dispatch(updateTodoItem(currentText, currentIndex));
         } else {
           dispatch(addTodoItem(currentText));
@@ -55,7 +55,7 @@ function App() {
 
   const updateItem = () => {
       if(currentText === "") return
-      if(action === 'editing') {
+      if(editing) {
         dispatch(updateTodoItem(currentText, currentIndex));
       } else {
         dispatch(addTodoItem(currentText));
