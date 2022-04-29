@@ -7,12 +7,13 @@ import { useSelector } from 'react-redux';
 const Items = props => {
 
 
-    const listItems = useSelector(data => data.items);    
+    const listItems = useSelector(data => data.todolist.items);
+    console.log(listItems)
         // items here in order not to complicate app.js 
     return (
         <div>
-            {listItems.map(listItem => {
-                return <Item key={Math.random() * 1000} content={listItem} />
+            {listItems.map((listItem, index) => {
+                return <Item key={Math.random() * 1000} content={listItem} index={index} />
             })}
         </div>
     )

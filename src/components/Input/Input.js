@@ -7,24 +7,12 @@ import styles from './Input.module.css'
 
 const Input = props => {
 
-    const dispatch = useDispatch();
-
-    const [ currentText, setCurrentText ] = useState("");
-    const changeTextHandler = (e) => {
-        setCurrentText(e.target.value);
-    }
-
-    const handleKeyPress = (event) => {
-        if(event.key === 'Enter'){
-            dispatch(addTodoItem(currentText));
-            setCurrentText("");
-        }
-      }
-
-    const updateItem = () => {
-         dispatch(addTodoItem(currentText));
-         setCurrentText("");
-    }
+    const {
+        currentText,
+        handleKeyPress,
+        changeTextHandler,
+        updateItem
+    } = props
 
     return (
         <div className={styles.wrapper}>

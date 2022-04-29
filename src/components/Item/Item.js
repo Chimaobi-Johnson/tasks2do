@@ -1,19 +1,25 @@
 import React from 'react';
 import { FaPen } from 'react-icons/fa';
 import { FaTrash } from 'react-icons/fa';
+import { useDispatch } from "react-redux";
+import { setCurrentAction } from '../../store/actions/todolist';
 import styles from './Item.module.css';
 
 
 const Item = props => {
 
+    const dispatch = useDispatch()
+
+    const { content, index } = props;
+
     return (
         <div className={styles.wrapper}>
             <div className={styles.content}>
-                <span>{props.content}</span>
+                <span>{content}</span>
             </div>
             <div className={styles.actions}>
                 <div className={styles.edit}>
-                   <FaPen />
+                   <FaPen onClick={() => dispatch(setCurrentAction('edit', index))} />
                 </div>
                 <div className={styles.delete}>
                    <FaTrash />

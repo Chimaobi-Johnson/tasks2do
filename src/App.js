@@ -2,18 +2,19 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import Input from './components/Input/Input';
 import Items from './containers/Items/Items';
-import { saveDataHandler, fetchData } from './store/actions/todolist';
+import { saveDataHandler, fetchData, updateTodoItem, setCurrentAction } from './store/actions/todolist';
+import { addTodoItem } from './store/actions/todolist';
 import { db } from './firebase-config';
-import { collection, getDocs } from 'firebase/firestore';
-import { useSelector } from 'react-redux';
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from 'react-redux';
+
 
 
 function App() {
   const dispatch = useDispatch();
-  const itemsList = collection(db, 'todolist')
-  const listItems = useSelector(data => data.items);
-  const [info , setInfo] = useState([]); 
+  const listItems = useSelector(data => data.todolist.items);
+  const currentIndex = useSelector(data => data.todolist.currentIndex);
+  const action = useSelector(data => data.todolist.action);
+  console.log(currentIndex)
   useEffect(() => {
 
     const getTodoListItems = async () => {
@@ -34,13 +35,49 @@ function App() {
     getTodoListItems()
   }, [])
 
+  const [ currentText, setCurrentText ] = useState("");
+  const changeTextHandler = (e) => {
+      setCurrentText(e.target.value);
+  }
 
+  const handleKeyPress = (event) => {
+      if(event.key === 'Enter'){
+        if(action === 'editing') {
+          dispatch(updateTodoItem(currentText, currentIndex));
+        } else {
+          dispatch(addTodoItem(currentText));
+        }
+        dispatch(setCurrentAction('', currentIndex))
+        setCurrentText("");
+      }
+    }
+
+  const updateItem = () => {
+      if(action === 'editing') {
+        dispatch(updateTodoItem(currentText, currentIndex));
+      } else {
+        dispatch(addTodoItem(currentText));
+      }
+      dispatch(setCurrentAction('', currentIndex))
+      setCurrentText("");
+  }
+
+  useEffect(() => {
+    assignTextToInput()
+    function assignTextToInput() {
+      setCurrentText(listItems[currentIndex])
+    }
+  }, [currentIndex])
 
   return (
       <div className="wrapper">
          <div className="container">
             <header>TODO LIST</header>
-            <Input />
+            <Input 
+              currentText={currentText}
+              changeTextHandler={changeTextHandler} 
+              handleKeyPress={handleKeyPress} 
+              updateItem={updateItem} />
             <Items />
           <div className="save">
             <button onClick={() => dispatch(saveDataHandler(listItems))}>Save</button>

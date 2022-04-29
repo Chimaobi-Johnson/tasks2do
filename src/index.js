@@ -10,7 +10,7 @@ import thunk from 'redux-thunk';
 import TodoList from './store/reducers/todolistReducer';
 
 const rootReducer = combineReducers({
-  items: TodoList
+  todolist: TodoList
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
