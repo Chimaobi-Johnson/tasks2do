@@ -1,7 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import { FaPlus } from 'react-icons/fa';
-import { useDispatch } from "react-redux";
-import { addTodoItem } from '../../store/actions/todolist';
 
 import styles from './Input.module.css'
 

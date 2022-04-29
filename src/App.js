@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import './App.css';
 import Input from './components/Input/Input';
 import Items from './containers/Items/Items';
-import { saveDataHandler, fetchData, updateTodoItem, setCurrentAction } from './store/actions/todolist';
+import { saveDataHandler, fetchData, updateTodoItem, setEditMode } from './store/actions/todolist';
 import { addTodoItem } from './store/actions/todolist';
 import { db } from './firebase-config';
 import { useSelector, useDispatch } from 'react-redux';
+
+import './App.css';
+
 
 
 
@@ -14,7 +16,7 @@ function App() {
   const listItems = useSelector(data => data.todolist.items);
   const currentIndex = useSelector(data => data.todolist.currentIndex);
   const editing = useSelector(data => data.todolist.editing);
-  console.log(currentIndex)
+  
   useEffect(() => {
 
     const getTodoListItems = async () => {
@@ -25,7 +27,6 @@ function App() {
       } else {
         // take items doc and dispatch to redux store
         const data = dataset.docs.map(doc => doc.data());
-        console.log(data[0])
         // dispatch first object to redux store (query can only return one object at a time)
         dispatch(fetchData(data[0]));
       }
@@ -33,9 +34,12 @@ function App() {
     }
 
     getTodoListItems()
-  }, [])
+  }, [dispatch])
+
+  // INPUT CHANGE, EDIT AND UPDATE FUNCTIONALITY
 
   const [ currentText, setCurrentText ] = useState("");
+
   const changeTextHandler = (e) => {
       setCurrentText(e.target.value);
   }
@@ -48,7 +52,7 @@ function App() {
         } else {
           dispatch(addTodoItem(currentText));
         }
-        dispatch(setCurrentAction('', currentIndex))
+        dispatch(setEditMode('', currentIndex))
         setCurrentText("");
       }
     }
@@ -60,16 +64,17 @@ function App() {
       } else {
         dispatch(addTodoItem(currentText));
       }
-      dispatch(setCurrentAction('', currentIndex))
+      dispatch(setEditMode('', currentIndex))
       setCurrentText("");
   }
 
+  // ADDING TEXT TO INPUT VALUE WHEN EDIT BUTTON IS CLICKED
   useEffect(() => {
     assignTextToInput()
     function assignTextToInput() {
       setCurrentText(listItems[currentIndex])
     }
-  }, [currentIndex])
+  }, [currentIndex, listItems])
 
   return (
       <div className="wrapper">
@@ -81,9 +86,11 @@ function App() {
               handleKeyPress={handleKeyPress} 
               updateItem={updateItem} />
             <Items />
+
           <div className="save">
             <button onClick={() => dispatch(saveDataHandler(listItems))}>Save</button>
           </div>
+
          </div>
       </div>  
     );
