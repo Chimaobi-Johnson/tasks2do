@@ -1,4 +1,4 @@
-import { ADD_TODO_ITEM } from "../actions/action-types";
+import { ADD_TODO_ITEM, FETCHED_DATA_SUCCESSFULLY } from "../actions/action-types";
   
   const initialState = [];
 
@@ -8,6 +8,8 @@ import { ADD_TODO_ITEM } from "../actions/action-types";
         const newArray = [...state];
         newArray.push(action.payload);
         return newArray;
+      case FETCHED_DATA_SUCCESSFULLY:
+            return action.payload.items
       default:
         return state;
     }

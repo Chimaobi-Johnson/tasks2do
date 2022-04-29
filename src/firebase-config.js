@@ -1,5 +1,6 @@
-import { getFirestore } from '@firebase/firestore';
-import { initializeApp } from "firebase/app";
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/firestore';
+// import { initializeApp } from "firebase/app";
 
 // store in env
 const firebaseConfig = {
@@ -12,6 +13,6 @@ const firebaseConfig = {
     measurementId: "G-2CHQ7RN42K"
   };
 
-const app = initializeApp(firebaseConfig);
+const app = firebase.initializeApp(firebaseConfig);
 
-export const db = getFirestore(app);
+export const db = app.firestore();
