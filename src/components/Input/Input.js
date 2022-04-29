@@ -1,5 +1,5 @@
 import React from "react";
-import { FaPlus } from 'react-icons/fa';
+import { FaPlus, FaCheck } from 'react-icons/fa';
 
 import styles from './Input.module.css'
 
@@ -9,13 +9,14 @@ const Input = props => {
         currentText,
         handleKeyPress,
         changeTextHandler,
-        updateItem
+        updateItem,
+        editing
     } = props
 
     return (
         <div className={styles.wrapper}>
             <input type="text" value={currentText} onKeyPress={handleKeyPress} onChange={(event) => changeTextHandler(event)} placeholder="add an item" />
-            <button onClick={() => updateItem()}><FaPlus /></button>
+            <button onClick={() => updateItem()}>{editing ? <FaCheck /> : <FaPlus />}</button>
         </div>
     )
 }

@@ -46,7 +46,7 @@ function App() {
 
   const handleKeyPress = (event) => {
       if(event.key === 'Enter'){
-        if(currentText === "") return
+        if(!currentText) return dispatch(setEditMode('', currentIndex))
         if(editing) {
           dispatch(updateTodoItem(currentText, currentIndex));
         } else {
@@ -58,7 +58,7 @@ function App() {
     }
 
   const updateItem = () => {
-      if(currentText === "") return
+      if(!currentText) return dispatch(setEditMode('', currentIndex))
       if(editing) {
         dispatch(updateTodoItem(currentText, currentIndex));
       } else {
@@ -67,7 +67,7 @@ function App() {
       dispatch(setEditMode('', currentIndex))
       setCurrentText("");
   }
-
+  console.log(currentText)
   // ADDING TEXT TO INPUT VALUE WHEN EDIT BUTTON IS CLICKED
   useEffect(() => {
     assignTextToInput()
@@ -84,7 +84,9 @@ function App() {
               currentText={currentText}
               changeTextHandler={changeTextHandler} 
               handleKeyPress={handleKeyPress} 
-              updateItem={updateItem} />
+              updateItem={updateItem} 
+              editing={editing}
+              />
             <Items />
 
           <div className="save">
