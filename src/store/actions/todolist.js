@@ -1,5 +1,5 @@
 import { ADD_TODO_ITEM, SAVE_DATA, FETCHED_DATA_SUCCESSFULLY, SET_CURRENT_INDEX, 
-UPDATE_TODO_ITEM } from './action-types';
+UPDATE_TODO_ITEM, DELETE_TODO_ITEM } from './action-types';
 import { db } from '../../firebase-config';
 import { collection, addDoc } from 'firebase/firestore';
 
@@ -45,6 +45,13 @@ export const updateTodoItem = (data, index) => async (dispatch) => {
         type: UPDATE_TODO_ITEM,
         payload: data,
         index: index
+    })
+}
+
+export const deleteTodoItem = (index) => async (dispatch) => {
+    dispatch({
+        type: DELETE_TODO_ITEM,
+        payload: index
     })
 }
 

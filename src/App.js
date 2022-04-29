@@ -42,6 +42,7 @@ function App() {
 
   const handleKeyPress = (event) => {
       if(event.key === 'Enter'){
+        if(currentText === "") return
         if(action === 'editing') {
           dispatch(updateTodoItem(currentText, currentIndex));
         } else {
@@ -53,6 +54,7 @@ function App() {
     }
 
   const updateItem = () => {
+      if(currentText === "") return
       if(action === 'editing') {
         dispatch(updateTodoItem(currentText, currentIndex));
       } else {

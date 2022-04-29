@@ -1,4 +1,4 @@
-import { ADD_TODO_ITEM, FETCHED_DATA_SUCCESSFULLY, SET_CURRENT_INDEX, UPDATE_TODO_ITEM } from "../actions/action-types";
+import { ADD_TODO_ITEM, FETCHED_DATA_SUCCESSFULLY, SET_CURRENT_INDEX, UPDATE_TODO_ITEM, DELETE_TODO_ITEM } from "../actions/action-types";
   
   const initialState = {
     items: [],
@@ -24,15 +24,22 @@ import { ADD_TODO_ITEM, FETCHED_DATA_SUCCESSFULLY, SET_CURRENT_INDEX, UPDATE_TOD
         console.log(action.payload.data)
         return {
           ...state,
-          action: action.payload.data === 'edit' ? 'editing' : '',
+          action: action.payload.data === 'edit' ? 'editing' : 'delete' ? 'deleting' : '',
           currentIndex: action.payload.index
         }
       case UPDATE_TODO_ITEM:
         const itemsArr = [...state.items];
-        itemsArr[action.index] = action.payload
+        itemsArr[action.payload.index] = action.payload.data
         return {
           ...state,
           items: itemsArr
+        }
+      case DELETE_TODO_ITEM:
+        const itemsArr2 = [...state.items];
+        itemsArr2.splice(action.payload, 1);
+        return {
+          ...state,
+          items: itemsArr2
         }
       default:
         return state;

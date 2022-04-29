@@ -2,7 +2,7 @@ import React from 'react';
 import { FaPen } from 'react-icons/fa';
 import { FaTrash } from 'react-icons/fa';
 import { useDispatch } from "react-redux";
-import { setCurrentAction } from '../../store/actions/todolist';
+import { setCurrentAction, deleteTodoItem } from '../../store/actions/todolist';
 import styles from './Item.module.css';
 
 
@@ -22,7 +22,7 @@ const Item = props => {
                    <FaPen onClick={() => dispatch(setCurrentAction('edit', index))} />
                 </div>
                 <div className={styles.delete}>
-                   <FaTrash />
+                   <FaTrash onClick={() => dispatch(deleteTodoItem(index))} />
                 </div>
             </div>
         </div>
