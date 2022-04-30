@@ -67,7 +67,7 @@ function App() {
       dispatch(setEditMode('', currentIndex))
       setCurrentText("");
   }
-  
+
   // ADDING TEXT TO INPUT VALUE WHEN EDIT BUTTON IS CLICKED
   useEffect(() => {
     assignTextToInput()
@@ -88,7 +88,7 @@ function App() {
   return (
       <div className="wrapper">
          <div className="container">
-            <header>TODO LIST</header>
+            <header>TASKS2DO!</header>
             <Input 
               currentText={currentText}
               changeTextHandler={changeTextHandler} 

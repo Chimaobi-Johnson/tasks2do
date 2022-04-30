@@ -15,7 +15,7 @@ const Input = props => {
 
     return (
         <div className={styles.wrapper}>
-            <input type="text" value={currentText} onKeyPress={handleKeyPress} onChange={(event) => changeTextHandler(event)} placeholder="add an item" />
+            <input type="text" value={currentText} onKeyPress={handleKeyPress} onChange={(event) => changeTextHandler(event)} placeholder="Add an item" />
             <button className={styles.inputBtn} onClick={() => updateItem()}>{editing ? <FaCheck /> : <FaPlus />}</button>
         </div>
     )
