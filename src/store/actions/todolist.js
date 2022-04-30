@@ -1,6 +1,5 @@
 import {
     ADD_TODO_ITEM,
-    SAVE_DATA,
     FETCHED_DATA_SUCCESSFULLY,
     SET_EDIT_MODE,
     UPDATE_TODO_ITEM,
@@ -14,13 +13,6 @@ export const addTodoItem = (item) => (dispatch) => {
 
 export const fetchData = (item) => (dispatch) => {
     dispatch({type: FETCHED_DATA_SUCCESSFULLY, payload: item})
-}
-
-export const saveDataHandler = (data) => async (dispatch) => {
-    const res = await db.collection('todolist').doc('items').set({items: data})
-    if (res) {
-        dispatch({type: SAVE_DATA, payload: data})
-    }
 }
 
 export const setEditMode = (data, index) => async (dispatch) => {

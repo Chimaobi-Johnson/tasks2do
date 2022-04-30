@@ -2,7 +2,6 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 // import { initializeApp } from "firebase/app";
 
-// store in env
 const firebaseConfig = {
     apiKey: "AIzaSyCLy5tXaAX0pHZZ8r9xupO6ciqwLttDEBw",
     authDomain: "tasks2do-91121.firebaseapp.com",

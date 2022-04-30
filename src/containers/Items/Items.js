@@ -8,8 +8,8 @@ const Items = props => {
 
 
     const listItems = useSelector(data => data.todolist.items);
-    console.log(listItems)
-        // items here in order not to complicate app.js 
+
+    // items here in order not to complicate app.js 
     return (
         <div>
             {listItems.map((listItem, index) => {
