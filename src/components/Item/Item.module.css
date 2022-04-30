@@ -1,10 +1,10 @@
 .wrapper {  
-    width: 114%;
+    width: 120%;
     margin-top: 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-radius: 7px;
+    border-radius: 6px;
     cursor: pointer;
 }
 
@@ -13,27 +13,31 @@
 }
 
 .content {
-    border-radius: 10px;
+    border-radius: 6px;
+    font-weight: 500;
     padding: 10px;
-    flex-basis: 84.5%;
-    color: #fbfbfb;
+    flex-basis: 80.5%;
+    color: #000;
     background-color: #7e94ff;
 }
 
 .actions {
-    justify-content: flex-start;
+    justify-content: flex-end;
     align-items: center;
     display: none;
-    flex: 1;
     margin-left: 1rem;
+    flex: 1;
 }
 
 
 .edit {
-    color: green;
+    color: #c8d0c8;
+    padding: 8px 11px;
+    margin-right: 5px;
 }
 
 .delete {
     margin-left: 5px;
-    color: red;
+    padding: 8px 11px;
+    color: #ff9889;
 }

@@ -7,24 +7,28 @@
 }
 
 input {
-    /* padding: 8px 5px; */
     height: 100%;
     width: 100%;
     border: none;
     outline: none;
+    border-radius: 6px;
 }
 
 input::placeholder {
     padding-left: 4px;
 }
 
-button {
+.inputBtn {
     position: absolute;
     width: 7%;
     right: 0;
     height: inherit;
-    background-color: #0ab521;
+    /* background-color: #0ab521; */
+    background-color: #ff9889;
     cursor: pointer;
     border: none;
     outline: none;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    margin-right: 1px;
 }
